@@ -5,7 +5,7 @@ import time
 def read_csv():
     print(fileoutput)
 
-    with open("D:\NgeeAnn\Year3_Sems_2\ETI_Module\Python\View_Maze.py", 'rt') as csvfile:
+    with open("fileoutput[0]", 'rt') as csvfile:
 
         spamreader = csv.reader(csvfile)
         for row in spamreader:
