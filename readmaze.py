@@ -3,9 +3,9 @@ import csv
 import time
 fileoutput = []
 
-def load_csv():
-    file = input("Enter the name of data file:")
-
+def load_csv(f):
+    file = f
+    
     #Try Catch Block
     try:
         with open(file,'r') as csvfile:
@@ -24,6 +24,6 @@ def load_csv():
             menu()
     except FileNotFoundError:
         print(file,"does not exist. Try again")
-        load_csv()
         return 0
+        load_csv()
 

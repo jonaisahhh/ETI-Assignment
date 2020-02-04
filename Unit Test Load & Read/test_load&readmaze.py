@@ -13,19 +13,20 @@ from selenium.webdriver.support import expected_conditions as EC
 
 #User inpuit the correct .csv file
 def test_CorrectInput():
-    filenameToLoad = 'maze.csv'
-    #Call the function to load csv 
-    assert trytoload == 'Success'
+    trytoload = load_csv("maze.csv")
+    #Call the function to load csv, expected return type should be a 1, 1 for success, 0 for fail
+    assert trytoload == 1
+
 #2 Failing Test Case
 
 #User input the wrong name
 def test_WrongName():
-    filenameToLoad = 'msze.csv'
+    trytoload = load_csv('msze.csv')
     #Call function to load csv with filenameToLoad
-    assert trytoload == 'File could not be found'
+    assert trytoload == 0 #
 
 #User input the wrong extension
 def test_WrongExt():
-    filenameToLoad = 'maze.doc'
+    trytoload = load_csv('maze.doc')
     #Call function to load csv with filenameToLoad
-    assert trytoload == 'Error!'
+    assert trytoload == 0 # Expect 0 failing

@@ -18,8 +18,9 @@ def menu():
 """)
     choice = input("Please enter your choice:")
     if choice == "1" or choice =="1":
-        load_csv()
-        return("To be implemented1")
+        file = input("Enter the name of data file:")
+        load_csv(file)
+        
     elif choice == "2" or choice =="2":
         return("To be implemented2")
     elif choice == "3" or choice =="3":
