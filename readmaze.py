@@ -1,37 +1,29 @@
-import xlrd
-import numpy as np
-import pandas as pd
+import sys
+import csv
+import time
+fileoutput = []
 
-def load_file(filename):
-    f = filename
-    sList = f.split('.')
+def load_csv():
+    file = input("Enter the name of data file:")
 
-    if (len(sList) != 2):
-        print ("Error, please try again")
+    #Try Catch Block
+    try:
+        with open(file,'r') as csvfile:
+            csv_reader = csv.reader(csvfile)
+            row_count=sum(1 for row in csvfile)
+            print("Reading",file, "...")
+            print("Number of lines read:", row_count)
+            if len(fileoutput) >= 1:
+                fileoutput.clear()
+                fileoutput.append(file)
+                return 1
+            else:
+                fileoutput.append(file)
+                return 1
+            #Return back to menu 
+            menu()
+    except FileNotFoundError:
+        print(file,"does not exist. Try again")
+        load_csv()
+        return 0
 
-    else:
-        name = sList[0]
-        ext = sList[1]
-        #If extension is anything other than a csv, display Error
-        if ((name != "maze") and (ext != "csv")):
-            print ("Error, file could not be found!")
-        elif (ext != "csv"):
-            print ("Error, please ensure the extension is correct")
-        elif (name != "maze"):
-            print ("File could not be found!")
-        
-        else:
-            print ("Loading file...")
-            file_name = "C:/Users/rayne/Desktop/Np Stuff/Year 3.2/Emerging Trends in IT/maze.csv"
-            sheet =  "maze"
-
-            
-            data = pd.read_csv(file_name, header=None)
-            print (data)
-
-def main():
-    value = input("Enter the name of the datafile:")
-    load_file(value)
-
-
-main()
