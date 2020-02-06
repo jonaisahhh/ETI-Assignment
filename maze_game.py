@@ -22,6 +22,7 @@ def menu():
         load_csv(file)
         menu()
     elif choice == "2" or choice =="2":
+        read_csv()
         return("To be implemented2")
     elif choice == "3" or choice =="3":
         return("To be implemented3")
@@ -58,6 +59,19 @@ def load_csv(f):
         return 0
         load_csv()
 
-        
+def read_csv():
+    try:
+
+
+        with open(fileoutput[0], 'rt') as csvfile:
+
+            spamreader = csv.reader(csvfile)
+            for row in spamreader:
+                #print(', '.join(row))
+                print(row)
+        menu()
+    except(IndexError,FileNotFoundError):
+        print("File is not found please load a file first")
+        menu()
 
 menu()
