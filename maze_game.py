@@ -20,7 +20,7 @@ def menu():
     if choice == "1" or choice =="1":
         file = input("Enter the name of data file:")
         load_csv(file)
-        
+        menu()
     elif choice == "2" or choice =="2":
         return("To be implemented2")
     elif choice == "3" or choice =="3":
