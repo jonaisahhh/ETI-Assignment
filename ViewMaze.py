@@ -29,7 +29,7 @@ def test_exitpage():
 
 
 #2 Failing Test Case
-
+#
     #User is able to view maze without input file inserted
 def test_withoutinput():
     Fileoutput.append("maze.csv")
