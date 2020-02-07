@@ -1,3 +1,4 @@
+#Moved file to root directory
 #view the maze from csv
 import os
 from selenium import webdriver
