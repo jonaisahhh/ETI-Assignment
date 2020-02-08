@@ -160,18 +160,22 @@ def add_into_list():
             # print(', '.join(row))
             #print(row)
 
-
+def pytest_print():
+    return "Option 3 Called"
 
 
 def play_maze(g):
     #fileoutput[0] = g
+    pytest_print()
     with open(g, 'w+',newline='') as csvfile:
         writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         csvfile.seek(0)
         writer.writerows(csvlist)
         # way to write to csv file
+        #print(csvlist)
         for row in csvlist:
             print(row)
+            
 
         try:
             for sub_list in csvlist:
@@ -179,18 +183,24 @@ def play_maze(g):
                     row_a = csvlist.index(sub_list)
                     column_a = sub_list.index('A')
                     print("Postion of starting point is Row", csvlist.index(sub_list)+1,"Column:", sub_list.index('A')+1)
+                    
         except ValueError:
             print("No such character in list")
+            
 
         try:
             for sub_list in csvlist:
                 if 'B' in sub_list:
                     row_b = csvlist.index(sub_list)
                     column_b = sub_list.index('B')
+                    
                     print("Postion of ending point is Row", csvlist.index(sub_list)+1,"Column:", sub_list.index('B')+1)
+                    
         except ValueError:
             print("No such character in list")
-
+            
+        
+    
         #movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
         try:
             while ((row_a != row_b) & (column_a != column_b)) or ((row_a == row_b) & (column_a != column_b)) or ((row_a != row_b) & (column_a == column_b)):
@@ -570,6 +580,7 @@ def play_maze(g):
             csvfile.seek(0)
             time.sleep(3)
             return [0,menu()]
+    return 1
 
 
 
@@ -614,4 +625,4 @@ def configure_maze():
 
 
 
-menu()
+#menu()
