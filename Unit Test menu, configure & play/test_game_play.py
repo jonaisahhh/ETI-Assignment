@@ -1,5 +1,6 @@
 #Load maze game from csv
 import os
+<<<<<<< HEAD
 import unittest
 from unittest import TestCase
 from unittest.mock import patch
@@ -11,6 +12,11 @@ from sys import stdout
 import pytest
 from _pytest.compat import CaptureIO
 from _pytest.fixtures import FixtureRequest
+=======
+#from selenium import webdriver
+#from selenium.webdriver.common.keys import Keys
+import pytest
+>>>>>>> c6a72dd83fe873ee3a11b4ac6ef3ce67f708bc41
 #from selenium.webdriver.common.by import By
 #from selenium.webdriver.support.ui import WebDriverWait
 #from selenium.webdriver.support import expected_conditions as EC
