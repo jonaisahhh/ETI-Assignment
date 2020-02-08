@@ -26,7 +26,6 @@ def test_SuccessfulMazeComplete():
     #User input moves to complete the maze
     assert trytoload == congratz_won()
 
-
     
 #2 Failing Test Case
 
@@ -47,3 +46,8 @@ def test_Invalidmove():
     #User input move to move to the right where there is a wall
     
     assert trytoload == 'Error!'
+
+def test_loading_complete_maze():
+    filenameToLoad = 'complete_maze.csv'
+    user_input = '3'
+    assert trytoload == 'Message that says maze has been completed load a new one or configure it'
