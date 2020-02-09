@@ -249,8 +249,8 @@ def play_maze(g):
                                 if 'A' in sub_list:
                                     row_a = csvlist.index(sub_list)
                                     column_a = sub_list.index('A')
-                                    print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                          sub_list.index('A') + 1)
+                                    print("Postion of starting point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('A') + 1)))
                         except ValueError:
                             print("No such character in list")
 
@@ -259,8 +259,8 @@ def play_maze(g):
                                 if 'B' in sub_list:
                                     row_b = csvlist.index(sub_list)
                                     column_b = sub_list.index('B')
-                                    print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                          sub_list.index('B') + 1)
+                                    print("Postion of starting point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('B') + 1)))
                         except ValueError:
                             print("No such character in list")
                         csvfile.seek(0)
@@ -275,8 +275,8 @@ def play_maze(g):
                                 if 'A' in sub_list:
                                     row_a = csvlist.index(sub_list)
                                     column_a = sub_list.index('A')
-                                    print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                          sub_list.index('A') + 1)
+                                    print("Postion of starting point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('A') + 1)))
                         except ValueError:
                             print("No such character in list")
 
@@ -285,8 +285,8 @@ def play_maze(g):
                                 if 'B' in sub_list:
                                     row_b = csvlist.index(sub_list)
                                     column_b = sub_list.index('B')
-                                    print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                          sub_list.index('B') + 1)
+                                    print("Postion of starting point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('B') + 1)))
                         except ValueError:
                             print("No such character in list")
                         csvfile.seek(0)
@@ -305,8 +305,8 @@ def play_maze(g):
                                 if 'A' in sub_list:
                                     row_a = csvlist.index(sub_list)
                                     column_a = sub_list.index('A')
-                                    print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                          sub_list.index('A') + 1)
+                                    print("Postion of starting point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('A') + 1)))
                         except ValueError:
                             print("No such character in list")
 
@@ -315,8 +315,8 @@ def play_maze(g):
                                 if 'B' in sub_list:
                                     row_b = csvlist.index(sub_list)
                                     column_b = sub_list.index('B')
-                                    print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                          sub_list.index('B') + 1)
+                                    print("Postion of ending point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('B') + 1)))
                         except ValueError:
                             print("No such character in list")
                         print("Invalid move, try again")
@@ -327,8 +327,8 @@ def play_maze(g):
                                 if 'A' in sub_list:
                                     row_a = csvlist.index(sub_list)
                                     column_a = sub_list.index('A')
-                                    print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                          sub_list.index('A') + 1)
+                                    print("Postion of starting point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('A') + 1)))
                         except ValueError:
                             print("No such character in list")
 
@@ -337,8 +337,8 @@ def play_maze(g):
                                 if 'B' in sub_list:
                                     row_b = csvlist.index(sub_list)
                                     column_b = sub_list.index('B')
-                                    print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                          sub_list.index('B') + 1)
+                                    print("Postion of ending point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('B') + 1)))
                         except ValueError:
                             print("No such character in list")
                         csvfile.seek(0)
@@ -353,8 +353,8 @@ def play_maze(g):
                                 if 'A' in sub_list:
                                     row_a = csvlist.index(sub_list)
                                     column_a = sub_list.index('A')
-                                    print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                          sub_list.index('A') + 1)
+                                    print("Postion of starting point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('A') + 1)))
                         except ValueError:
                             print("No such character in list")
 
@@ -363,8 +363,8 @@ def play_maze(g):
                                 if 'B' in sub_list:
                                     row_b = csvlist.index(sub_list)
                                     column_b = sub_list.index('B')
-                                    print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                          sub_list.index('B') + 1)
+                                    print("Postion of ending point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('B') + 1)))
                         except ValueError:
                             print("No such character in list")
                         print("Valid move A")
@@ -377,8 +377,8 @@ def play_maze(g):
                                 if 'A' in sub_list:
                                     row_a = csvlist.index(sub_list)
                                     column_a = sub_list.index('A')
-                                    print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                          sub_list.index('A') + 1)
+                                    print("Postion of starting point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('A') + 1)))
                         except ValueError:
                             print("No such character in list")
 
@@ -387,8 +387,8 @@ def play_maze(g):
                                 if 'B' in sub_list:
                                     row_b = csvlist.index(sub_list)
                                     column_b = sub_list.index('B')
-                                    print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                          sub_list.index('B') + 1)
+                                    print("Postion of starting point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('B') + 1)))
                         except ValueError:
                             print("No such character in list")
                         csvfile.seek(0)
@@ -404,8 +404,8 @@ def play_maze(g):
                                 if 'A' in sub_list:
                                     row_a = csvlist.index(sub_list)
                                     column_a = sub_list.index('A')
-                                    print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                          sub_list.index('A') + 1)
+                                    print("Postion of starting point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('A') + 1)))
                         except ValueError:
                             print("No such character in list")
 
@@ -414,8 +414,8 @@ def play_maze(g):
                                 if 'B' in sub_list:
                                     row_b = csvlist.index(sub_list)
                                     column_b = sub_list.index('B')
-                                    print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                          sub_list.index('B') + 1)
+                                    print("Postion of starting point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('B') + 1)))
                         except ValueError:
                             print("No such character in list")
                         print("Valid move W")
@@ -489,8 +489,8 @@ def play_maze(g):
                                 if 'B' in sub_list:
                                     row_b = csvlist.index(sub_list)
                                     column_b = sub_list.index('B')
-                                    print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                          sub_list.index('B') + 1)
+                                    print("Postion of ending point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('B') + 1)))
                         except ValueError:
                             print("No such character in list")
                         print("Valid move S")
@@ -507,8 +507,8 @@ def play_maze(g):
                                 if 'A' in sub_list:
                                     row_a = csvlist.index(sub_list)
                                     column_a = sub_list.index('A')
-                                    print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                          sub_list.index('A') + 1)
+                                    print("Postion of starting point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('A') + 1)))
                         except ValueError:
                             print("No such character in list")
 
@@ -517,8 +517,8 @@ def play_maze(g):
                                 if 'B' in sub_list:
                                     row_b = csvlist.index(sub_list)
                                     column_b = sub_list.index('B')
-                                    print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                          sub_list.index('B') + 1)
+                                    print("Postion of ending point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('B') + 1)))
                         except ValueError:
                             print("No such character in list")
                         print("Invalid move, try again")

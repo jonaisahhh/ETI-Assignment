@@ -65,13 +65,32 @@ def test_CorrectInput():
 
 
 #User test for a completed maze
-def test_SuccessfulMazeComplete():
+def test_SuccessfulMazeReachedEnd():
     maze_game.csvlist = [['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'], ['X', 'O', 'O', 'O', 'X', 'O', 'O', 'X'],
                          ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'X'], ['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X'],
                          ['X', 'O', 'X', 'O', 'X', 'X', 'O', 'X'], ['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X'],
                          ['X', 'A', 'X', 'O', 'O', 'O', 'X', 'X'], ['X', 'B', 'X', 'X', 'X', 'X', 'X', 'X']]
     #trytoload = maze_game.load_csv("maze4.csv")
     set_keyboard_input(["S", "n"])
+    with pytest.raises(SystemExit) as exc:
+        maze_game.play_maze("maze4.csv")
+        output = get_display_output()
+        assert exc.value.code == 1
+
+    #Call the function to load csv
+
+    #Check if upon completing maze will a message be displayed
+def test_SuccessfulMazeComplete():
+    maze_game.csvlist = [['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+                         ['X', 'O', 'O', 'A', 'X', 'O', 'O', 'X'],
+                         ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'X'],
+                         ['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X'],
+                         ['X', 'O', 'X', 'O', 'X', 'X', 'O', 'X'],
+                         ['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X'],
+                         ['X', 'O', 'X', 'O', 'O', 'O', 'X', 'X'],
+                         ['X', 'B', 'X', 'X', 'X', 'X', 'X', 'X']]
+    #trytoload = maze_game.load_csv("maze4.csv")
+    set_keyboard_input(["A", "D","S","W","A","A","S","S","S","S","S","S","n"])
     with pytest.raises(SystemExit) as exc:
         maze_game.play_maze("maze4.csv")
         output = get_display_output()
