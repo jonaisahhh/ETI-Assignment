@@ -17,7 +17,7 @@ from View_Maze import *
 #User inpuit to view the maze
 def test_viewMaze():
     viewmaze = read_csv()
-    assert viewmaze == "Success to view  the Maze"
+    assert viewmaze == "Success to view Maze"
 
     
 #2 Passing Test Case
@@ -25,7 +25,7 @@ def test_viewMaze():
 #User exit the page
 def test_exitpage():
     exits = read_csv()
-    assert exits == "Exits from the page"
+    assert exits == "Exits from page"
 
 
 #2 Failing Test Case
