@@ -5,7 +5,7 @@ import time
 def read_csv():
    # print(fileoutput)
 
-    file_directory = "D:\\NgeeAnn\\Year3_Sems_2\\ETI_Module\\Python\\View_Maze\\maze.csv"
+    file_directory = "maze.csv"
     with open(file_directory,'rt') as csvfile:
 
         spamreader = csv.reader(csvfile)
