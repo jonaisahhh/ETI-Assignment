@@ -16,7 +16,7 @@ def load_csv(f):
             with open(f,'r') as csvfile:
                 csv_reader = csv.reader(csvfile)
                 row_count=sum(1 for row in csvfile)
-                print("Reading",file, "...")
+                print("Reading",f, "...")
                 print("Number of lines read:", row_count)
                 if len(fileoutput) >= 1:
                     fileoutput.clear()
