@@ -19,7 +19,7 @@ def menu():
 """)
     choice = input("Please enter your choice:")
     if choice == "1" or choice =="1":
-        file = input("Enter the name of data file:)
+        file = input("Enter the name of data file:")
         load_csv(file)
         menu()        
     elif choice == "2" or choice =="2":
@@ -552,6 +552,33 @@ def play_maze(g):
                         print("Invalid move, try again")
                         #movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
                         return 1
+                    else:
+                        for row in csvlist:
+                            print(row)
+                        csvfile.seek(0)
+
+                        csvfile.seek(0)
+                        try:
+                            for sub_list in csvlist:
+                                if 'A' in sub_list:
+                                    row_a = csvlist.index(sub_list)
+                                    column_a = sub_list.index('A')
+                                    print("Postion of starting point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('A') + 1)))
+                        except ValueError:
+                            print("No such character in list")
+
+                        try:
+                            for sub_list in csvlist:
+                                if 'B' in sub_list:
+                                    row_b = csvlist.index(sub_list)
+                                    column_b = sub_list.index('B')
+                                    print("Postion of ending point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('B') + 1)))
+                        except ValueError:
+                            print("No such character in list")
+                        print("Invalid move, you can only choose W A S D or M, please try again")
+
                     
                 
                 else:

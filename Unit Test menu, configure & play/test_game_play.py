@@ -127,6 +127,7 @@ def test_DifferentMoveKey():
                          ['X', 'A', 'X', 'O', 'O', 'O', 'X', 'X'], ['X', 'B', 'X', 'X', 'X', 'X', 'X', 'X']]
     # trytoload = maze_game.load_csv("maze4.csv")
     set_keyboard_input(["F"])
-    maze_game.play_maze("maze4.csv")
-    output = get_display_output()
-    assert output == "Invalid move"
+    with pytest.raises(IndexError) as exc:
+        maze_game.play_maze("maze4.csv")
+        output = get_display_output()
+        assert exc.value.code == 1
