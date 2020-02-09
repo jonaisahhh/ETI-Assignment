@@ -31,8 +31,8 @@ def test_exitpage():
 #2 Failing Test Case
 
     #User is able to view maze without input file inserted
-def test_exitpage():
+def test_noInput():
     noinput = read_csv()
-    assert noinput == "Exits from the page"
+    assert noinput == "No input file was inserted"
 
 
