@@ -26,7 +26,8 @@ def menu():
         read_csv()
         return "To be implemented2"
     elif choice == "3" or choice =="3":
-        add_into_list()
+        check_file()
+        add_into_list(fileoutput[0])
         play_maze(fileoutput[0])
         return "To be implemented3"
     elif choice=="4" or choice=="4":
@@ -89,8 +90,8 @@ def load_csv(f):
             with open(file,'r') as csvfile:
                 csv_reader = csv.reader(csvfile)
                 row_count=sum(1 for row in csvfile)
-                print("Reading",file, "...")
-                print("Number of lines read:", row_count)
+                print("Reading "+file+ " ...")
+                print("Number of lines read: "+ str(row_count))
                 if len(fileoutput) >= 1:
                     fileoutput.clear()
                     fileoutput.append(file)
@@ -123,8 +124,16 @@ def read_csv():
     except(IndexError,FileNotFoundError):
         print("File is not found please load a file first")
         menu()
-
-def add_into_list():
+def check_file():
+    try:
+        with open(fileoutput[0], 'rt') as csvfile:
+            csv_reader = csv.reader(csvfile)
+            
+    except (IndexError,FileNotFoundError):
+        print("File is not found please load a file first")
+        return [0,menu()]
+def add_into_list(k):
+    fileoutput[0] = k
     try:
         with open(fileoutput[0], 'rt') as csvfile:
             csv_reader = csv.reader(csvfile)
