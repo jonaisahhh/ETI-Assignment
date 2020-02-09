@@ -1,6 +1,6 @@
 #Load maze game from csv
 import os
-<<<<<<< HEAD
+
 import unittest
 from unittest import TestCase
 from unittest.mock import patch
@@ -12,50 +12,75 @@ from sys import stdout
 import pytest
 from _pytest.compat import CaptureIO
 from _pytest.fixtures import FixtureRequest
-=======
+
 #from selenium import webdriver
 #from selenium.webdriver.common.keys import Keys
 import pytest
->>>>>>> c6a72dd83fe873ee3a11b4ac6ef3ce67f708bc41
+
 #from selenium.webdriver.common.by import By
 #from selenium.webdriver.support.ui import WebDriverWait
 #from selenium.webdriver.support import expected_conditions as EC
 # Read and load maza from file, this feature allows the application to read the maza diagram from the data file and store it in memory. It also stores the start (A) location and
 # the end (B) location. The application should prompt the user for the name of the data file. The number of records/lines read is then displayed
 import maze_game
+
 mock = Mock()
+
+from test_imports import *
+
 #1 Passing Test Case
 
 #User inpuit the correct options to view the file
-def test_CorrectInput(capsys):
+# def test_menu_shows_up():
+#     set_keyboard_input(["1","maze4.csv"])
+#     maze_game.menu()
+#     output = get_display_output()
+#     assert output == ["Success","Success"]
+
+def test_CorrectInput():
     maze_game.csvlist = [['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'], ['X', 'O', 'O', 'O', 'X', 'A', 'O', 'X'], ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'X'], ['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X'], ['X', 'O', 'X', 'O', 'X', 'X', 'O', 'X'], ['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X'], ['X', 'O', 'X', 'O', 'O', 'O', 'X', 'X'], ['X', 'B', 'X', 'X', 'X', 'X', 'X', 'X']]
     #trytoload = maze_game.load_csv("maze4.csv")
+    set_keyboard_input(["M", "n"])
+    with pytest.raises(SystemExit) as exc:
+        maze_game.play_maze("maze4.csv")
+        output = get_display_output()
+        assert exc.value.code == 1
 
 
     # Call the function to load csv
-    out, err = capsys.readouterr()
 
 
+    # output = get_display_output()
+    # pytest_wrapped_exit = pytest.raises(SystemExit)
 
-
-    loadcsv = maze_game.play_maze("maze4.csv")
-
-    assert maze_game.pytest_print() == 3
-
-
-    # User input to play current loaded csv
-    assert loadcsv == 1
-
+#     assert output == ["""['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
+# # ['X', 'O', 'O', 'O', 'X', 'A', 'O', 'X']
+# # ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'X']
+# # ['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X']
+# # ['X', 'O', 'X', 'O', 'X', 'X', 'O', 'X']
+# # ['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X']
+# # ['X', 'O', 'X', 'O', 'O', 'O', 'X', 'X']
+# # ['X', 'B', 'X', 'X', 'X', 'X', 'X', 'X']""","Postion of starting point is Row 2 Column: 6","Postion of ending point is Row 8 Column: 2","Goodbye"]
 
 
 
 #User test for a completed maze
 def test_SuccessfulMazeComplete():
-    trytoload = maze_game.load_csv("maze4.csv")
+    maze_game.csvlist = [['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'], ['X', 'O', 'O', 'O', 'X', 'O', 'O', 'X'],
+                         ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'X'], ['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X'],
+                         ['X', 'O', 'X', 'O', 'X', 'X', 'O', 'X'], ['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X'],
+                         ['X', 'A', 'X', 'O', 'O', 'O', 'X', 'X'], ['X', 'B', 'X', 'X', 'X', 'X', 'X', 'X']]
+    #trytoload = maze_game.load_csv("maze4.csv")
+    set_keyboard_input(["S", "n"])
+    with pytest.raises(SystemExit) as exc:
+        maze_game.play_maze("maze4.csv")
+        output = get_display_output()
+        assert exc.value.code == 1
+
     #Call the function to load csv
-    loadcsv = maze_game.play_maze("maze4.csv")
+
     #Check if upon completing maze will a message be displayed
-    assert loadcsv == 0
+
 
 
     
@@ -65,20 +90,43 @@ def test_SuccessfulMazeComplete():
 def test_NofileLoaded():
     filenameToLoad = ''
     #Call function to load csv with filenameToLoad
-    user_input = '3'
-    assert trytoload == 'File could not be found'
+    set_keyboard_input(["n"])
+    with pytest.raises(SystemExit) as exc:
+        maze_game.play_maze("")
+        output = get_display_output()
+        assert exc.value.code == 1
+    #fail = maze_game.play_maze("")
+
+    #assert fail == 'File could not be found'
 
 #User input an invalid move
 def test_Invalidmove():
-    filenameToLoad = 'maze.csv'
-    #Call function to load csv with filenameToLoad
-    user_input = '3'
-    #User input to configure current loaded csv
-    user_move_input = 'D'
-    #User input move to move to the right where there is a wall
-    
-    assert trytoload == 'Error!'
+    maze_game.csvlist = [['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'], ['X', 'O', 'O', 'O', 'X', 'O', 'O', 'X'],
+                         ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'X'], ['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X'],
+                         ['X', 'O', 'X', 'O', 'X', 'X', 'O', 'X'], ['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X'],
+                         ['X', 'A', 'X', 'O', 'O', 'O', 'X', 'X'], ['X', 'B', 'X', 'X', 'X', 'X', 'X', 'X']]
+    # trytoload = maze_game.load_csv("maze4.csv")
+    set_keyboard_input(["D"])
+    with pytest.raises(IndexError) as exc:
+        maze_game.play_maze("maze4.csv")
+        output = get_display_output()
+        assert exc.value.code == 1
+
+    #maze_game.movement = lambda: 'D'
+    #assert output == get_display_output()
+
 
 #User inputs invalid movement keys not WASD
 #def test_InvalidMoveInput():
-    
+
+##Still somewhat psuedo code
+def test_DifferentMoveKey():
+    maze_game.csvlist = [['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'], ['X', 'O', 'O', 'O', 'X', 'O', 'O', 'X'],
+                         ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'X'], ['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X'],
+                         ['X', 'O', 'X', 'O', 'X', 'X', 'O', 'X'], ['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X'],
+                         ['X', 'A', 'X', 'O', 'O', 'O', 'X', 'X'], ['X', 'B', 'X', 'X', 'X', 'X', 'X', 'X']]
+    # trytoload = maze_game.load_csv("maze4.csv")
+    set_keyboard_input(["F"])
+    maze_game.play_maze("maze4.csv")
+    output = get_display_output()
+    assert output == "Invalid move"

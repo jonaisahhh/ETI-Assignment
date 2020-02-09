@@ -19,11 +19,9 @@ def menu():
 """)
     choice = input("Please enter your choice:")
     if choice == "1" or choice =="1":
-        file = input("Enter the name of data file:")
+        file = input("Enter the name of data file:)
         load_csv(file)
-        menu()
-
-        return "To be implemented1"
+        menu()        
     elif choice == "2" or choice =="2":
         read_csv()
         return "To be implemented2"
@@ -34,7 +32,7 @@ def menu():
     elif choice=="4" or choice=="4":
         return "To be implemented4"
     elif choice=="0" or choice=="0":
-        sys.exit
+        sys.exit()
     else:
         print("You must only select either 1,2,3,4 or 0.")
         print("Please try again")
@@ -160,416 +158,441 @@ def add_into_list():
             # print(', '.join(row))
             #print(row)
 
-
+def cfm_return_to_menu():
+    cfm = input("Return to menu? Y/N")
+    if cfm == 'y' or cfm == 'Y':
+        return menu()
+    elif cfm == 'n' or cfm == 'N':
+        print("Goodbye")
+        sys.exit()
+    else:
+        print("Well you didn't press N or Y so out you go")
+        sys.exit()
 
 
 def play_maze(g):
     #fileoutput[0] = g
-    with open(g, 'w+',newline='') as csvfile:
-        writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        csvfile.seek(0)
-        writer.writerows(csvlist)
-        # way to write to csv file
-        for row in csvlist:
-            print(row)
+    #pytest_print()
+    try:
+        with open(g, 'w+',newline='') as csvfile:
+            writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            csvfile.seek(0)
+            writer.writerows(csvlist)
+            # way to write to csv file
+            #print(csvlist)
+            for row in csvlist:
+                print(row)
+                
 
-        try:
-            for sub_list in csvlist:
-                if 'A' in sub_list:
-                    row_a = csvlist.index(sub_list)
-                    column_a = sub_list.index('A')
-                    print("Postion of starting point is Row", csvlist.index(sub_list)+1,"Column:", sub_list.index('A')+1)
-        except ValueError:
-            print("No such character in list")
+            try:
+                for sub_list in csvlist:
+                    if 'A' in sub_list:
+                        row_a = csvlist.index(sub_list)
+                        column_a = sub_list.index('A')
+                        print("Postion of starting point is Row " + str((csvlist.index(sub_list)+1)) + " Column: " + str((sub_list.index('A')+1)))
+                        
+            except ValueError:
+                print("No such character in list")
+                
 
-        try:
-            for sub_list in csvlist:
-                if 'B' in sub_list:
-                    row_b = csvlist.index(sub_list)
-                    column_b = sub_list.index('B')
-                    print("Postion of ending point is Row", csvlist.index(sub_list)+1,"Column:", sub_list.index('B')+1)
-        except ValueError:
-            print("No such character in list")
-
-        #movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
-        try:
-            while ((row_a != row_b) & (column_a != column_b)) or ((row_a == row_b) & (column_a != column_b)) or ((row_a != row_b) & (column_a == column_b)):
-                movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
-                csvfile.seek(0)
-                if (movement == 'D' or movement == 'd') and (csvlist[row_a][column_a + 1] == 'X'):
-
-                    for row in csvlist:
-                        print(row)
-                    csvfile.seek(0)
-
-                    csvfile.seek(0)
-                    try:
-                        for sub_list in csvlist:
-                            if 'A' in sub_list:
-                                row_a = csvlist.index(sub_list)
-                                column_a = sub_list.index('A')
-                                print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('A') + 1)
-                    except ValueError:
-                        print("No such character in list")
-
-                    try:
-                        for sub_list in csvlist:
-                            if 'B' in sub_list:
-                                row_b = csvlist.index(sub_list)
-                                column_b = sub_list.index('B')
-                                print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('B') + 1)
-                    except ValueError:
-                        print("No such character in list")
-                    print("Invalid move, try again")
-                    #movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
-
-                elif (movement == 'D' or movement == 'd') and (csvlist[row_a][column_a + 1] == 'O' or csvlist[row_a][column_a + 1] == 'B'):
-
-                    try:
-                        for sub_list in csvlist:
-                            if 'A' in sub_list:
-                                row_a = csvlist.index(sub_list)
-                                column_a = sub_list.index('A')
-                                print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('A') + 1)
-                    except ValueError:
-                        print("No such character in list")
-
-                    try:
-                        for sub_list in csvlist:
-                            if 'B' in sub_list:
-                                row_b = csvlist.index(sub_list)
-                                column_b = sub_list.index('B')
-                                print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('B') + 1)
-                    except ValueError:
-                        print("No such character in list")
-                    csvfile.seek(0)
-                    csvlist[row_a][column_a] = 'O'
-                    csvlist[row_a][column_a+1] = 'A'
-                    writer.writerows(csvlist)
-                    csvfile.seek(0)
-                    for row in csvlist:
-                        print(row)
-                    try:
-                        for sub_list in csvlist:
-                            if 'A' in sub_list:
-                                row_a = csvlist.index(sub_list)
-                                column_a = sub_list.index('A')
-                                print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('A') + 1)
-                    except ValueError:
-                        print("No such character in list")
-
-                    try:
-                        for sub_list in csvlist:
-                            if 'B' in sub_list:
-                                row_b = csvlist.index(sub_list)
-                                column_b = sub_list.index('B')
-                                print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('B') + 1)
-                    except ValueError:
-                        print("No such character in list")
-                    csvfile.seek(0)
-                    print("Valid move D")
-                    #movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
-
-                elif (movement == 'A' or movement == 'a') and (csvlist[row_a][column_a - 1] == 'X'):
-
-                    for row in csvlist:
-                        print(row)
-                    csvfile.seek(0)
-
-                    csvfile.seek(0)
-                    try:
-                        for sub_list in csvlist:
-                            if 'A' in sub_list:
-                                row_a = csvlist.index(sub_list)
-                                column_a = sub_list.index('A')
-                                print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('A') + 1)
-                    except ValueError:
-                        print("No such character in list")
-
-                    try:
-                        for sub_list in csvlist:
-                            if 'B' in sub_list:
-                                row_b = csvlist.index(sub_list)
-                                column_b = sub_list.index('B')
-                                print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('B') + 1)
-                    except ValueError:
-                        print("No such character in list")
-                    print("Invalid move, try again")
-                    #movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
-                elif (movement == 'A' or movement == 'a') and (csvlist[row_a][column_a - 1] == 'O' or csvlist[row_a][column_a - 1] == 'B'):
-                    try:
-                        for sub_list in csvlist:
-                            if 'A' in sub_list:
-                                row_a = csvlist.index(sub_list)
-                                column_a = sub_list.index('A')
-                                print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('A') + 1)
-                    except ValueError:
-                        print("No such character in list")
-
-                    try:
-                        for sub_list in csvlist:
-                            if 'B' in sub_list:
-                                row_b = csvlist.index(sub_list)
-                                column_b = sub_list.index('B')
-                                print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('B') + 1)
-                    except ValueError:
-                        print("No such character in list")
-                    csvfile.seek(0)
-                    csvlist[row_a][column_a] = 'O'
-                    csvlist[row_a][column_a-1] = 'A'
-                    writer.writerows(csvlist)
-                    csvfile.seek(0)
-                    for row in csvlist:
-                        print(row)
-                    try:
-                        for sub_list in csvlist:
-                            if 'A' in sub_list:
-                                row_a = csvlist.index(sub_list)
-                                column_a = sub_list.index('A')
-                                print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('A') + 1)
-                    except ValueError:
-                        print("No such character in list")
-
-                    try:
-                        for sub_list in csvlist:
-                            if 'B' in sub_list:
-                                row_b = csvlist.index(sub_list)
-                                column_b = sub_list.index('B')
-                                print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('B') + 1)
-                    except ValueError:
-                        print("No such character in list")
-                    print("Valid move A")
-                    #movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
-
-                elif (movement == 'W' or movement == 'w') and (csvlist[row_a-1][column_a] == 'O' or csvlist[row_a-1][column_a] == 'B'):
-
-                    try:
-                        for sub_list in csvlist:
-                            if 'A' in sub_list:
-                                row_a = csvlist.index(sub_list)
-                                column_a = sub_list.index('A')
-                                print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('A') + 1)
-                    except ValueError:
-                        print("No such character in list")
-
-                    try:
-                        for sub_list in csvlist:
-                            if 'B' in sub_list:
-                                row_b = csvlist.index(sub_list)
-                                column_b = sub_list.index('B')
-                                print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('B') + 1)
-                    except ValueError:
-                        print("No such character in list")
-                    csvfile.seek(0)
-                    csvlist[row_a][column_a] = 'O'
-                    csvfile.seek(0)
-                    csvlist[row_a-1][column_a] = 'A'
-                    writer.writerows(csvlist)
-                    csvfile.seek(0)
-                    for row in csvlist:
-                        print(row)
-                    try:
-                        for sub_list in csvlist:
-                            if 'A' in sub_list:
-                                row_a = csvlist.index(sub_list)
-                                column_a = sub_list.index('A')
-                                print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('A') + 1)
-                    except ValueError:
-                        print("No such character in list")
-
-                    try:
-                        for sub_list in csvlist:
-                            if 'B' in sub_list:
-                                row_b = csvlist.index(sub_list)
-                                column_b = sub_list.index('B')
-                                print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('B') + 1)
-                    except ValueError:
-                        print("No such character in list")
-                    print("Valid move W")
-                    #movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
-                elif movement == 'M' or movement == 'm':
-                    try:
-                        for sub_list in csvlist:
-                            if 'A' in sub_list:
-                                row_a = csvlist.index(sub_list)
-                                column_a = sub_list.index('A')
-                                print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('A') + 1)
-                    except ValueError:
-                        print("No such character in list")
-
-                    try:
-                        for sub_list in csvlist:
-                            if 'B' in sub_list:
-                                row_b = csvlist.index(sub_list)
-                                column_b = sub_list.index('B')
-                                print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('B') + 1)
-                    except ValueError:
-                        print("No such character in list")
-                    print("Exiting current maze")
-
-                    csvfile.seek(0)
-                    writer.writerows(csvlist)
-                    menu()
-
-                elif (movement == 'S' or movement == 's') and (csvlist[row_a+1][column_a] == 'O' or csvlist[row_a+1][column_a] == 'B'):
-
-                    try:
-                        for sub_list in csvlist:
-                            if 'A' in sub_list:
-                                row_a = csvlist.index(sub_list)
-                                column_a = sub_list.index('A')
-                                print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('A') + 1)
-                    except ValueError:
-                        print("No such character in list")
-
-                    try:
-                        for sub_list in csvlist:
-                            if 'B' in sub_list:
-                                row_b = csvlist.index(sub_list)
-                                column_b = sub_list.index('B')
-                                print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('B') + 1)
-                    except ValueError:
-                        print("No such character in list")
-                    csvfile.seek(0)
-                    csvlist[row_a][column_a] = 'O'
-                    csvlist[row_a+1][column_a] = 'A'
-                    writer.writerows(csvlist)
-                    csvfile.seek(0)
-                    for row in csvlist:
-                        print(row)
-                    try:
-                        for sub_list in csvlist:
-                            if 'A' in sub_list:
-                                row_a = csvlist.index(sub_list)
-                                column_a = sub_list.index('A')
-                                print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('A') + 1)
-                    except ValueError:
-                        print("No such character in list")
-
-                    try:
-                        for sub_list in csvlist:
-                            if 'B' in sub_list:
-                                row_b = csvlist.index(sub_list)
-                                column_b = sub_list.index('B')
-                                print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('B') + 1)
-                    except ValueError:
-                        print("No such character in list")
-                    print("Valid move S")
-                    #movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
-
-                elif (movement == 'S' or movement == 's') and (csvlist[row_a+1][column_a] == 'X'):
-                    for row in csvlist:
-                        print(row)
-                    csvfile.seek(0)
-
-                    csvfile.seek(0)
-                    try:
-                        for sub_list in csvlist:
-                            if 'A' in sub_list:
-                                row_a = csvlist.index(sub_list)
-                                column_a = sub_list.index('A')
-                                print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('A') + 1)
-                    except ValueError:
-                        print("No such character in list")
-
-                    try:
-                        for sub_list in csvlist:
-                            if 'B' in sub_list:
-                                row_b = csvlist.index(sub_list)
-                                column_b = sub_list.index('B')
-                                print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('B') + 1)
-                    except ValueError:
-                        print("No such character in list")
-                    print("Invalid move, try again")
-                    #movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
-
-                elif (movement == 'W' or movement == 'w') and (csvlist[row_a-1][column_a] == 'X'):
-                    for row in csvlist:
-                        print(row)
-                    csvfile.seek(0)
-
-                    csvfile.seek(0)
-                    try:
-                        for sub_list in csvlist:
-                            if 'A' in sub_list:
-                                row_a = csvlist.index(sub_list)
-                                column_a = sub_list.index('A')
-                                print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('A') + 1)
-                    except ValueError:
-                        print("No such character in list")
-
-                    try:
-                        for sub_list in csvlist:
-                            if 'B' in sub_list:
-                                row_b = csvlist.index(sub_list)
-                                column_b = sub_list.index('B')
-                                print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
-                                      sub_list.index('B') + 1)
-                    except ValueError:
-                        print("No such character in list")
-                    print("Invalid move, try again")
-                    #movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
-                    return 1
+            try:
+                for sub_list in csvlist:
+                    if 'B' in sub_list:
+                        row_b = csvlist.index(sub_list)
+                        column_b = sub_list.index('B')
+                        
+                        print("Postion of ending point is Row " + str((csvlist.index(sub_list)+1))+ " Column: " + str((sub_list.index('B')+1)))
+                        
+            except ValueError:
+                print("No such character in list")
+                
             
-            else:
-                print("Congratulations you have finished the maze!")
-                print("Returning you to the menu ...")
+        
+            #movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
+            try:
+                while ((row_a != row_b) & (column_a != column_b)) or ((row_a == row_b) & (column_a != column_b)) or ((row_a != row_b) & (column_a == column_b)):
+                    movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
+                    csvfile.seek(0)
+                    if (movement == 'D' or movement == 'd') and (csvlist[row_a][column_a + 1] == 'X'):
+
+                        for row in csvlist:
+                            print(row)
+                        csvfile.seek(0)
+
+                        csvfile.seek(0)
+                        try:
+                            for sub_list in csvlist:
+                                if 'A' in sub_list:
+                                    row_a = csvlist.index(sub_list)
+                                    column_a = sub_list.index('A')
+                                    print("Postion of starting point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('A') + 1)))
+                        except ValueError:
+                            print("No such character in list")
+
+                        try:
+                            for sub_list in csvlist:
+                                if 'B' in sub_list:
+                                    row_b = csvlist.index(sub_list)
+                                    column_b = sub_list.index('B')
+                                    print("Postion of ending point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('B') + 1)))
+                        except ValueError:
+                            print("No such character in list")
+                        print("Invalid move, try again")
+                        #movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
+
+                    elif (movement == 'D' or movement == 'd') and (csvlist[row_a][column_a + 1] == 'O' or csvlist[row_a][column_a + 1] == 'B'):
+
+                        try:
+                            for sub_list in csvlist:
+                                if 'A' in sub_list:
+                                    row_a = csvlist.index(sub_list)
+                                    column_a = sub_list.index('A')
+                                    print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
+                                          sub_list.index('A') + 1)
+                        except ValueError:
+                            print("No such character in list")
+
+                        try:
+                            for sub_list in csvlist:
+                                if 'B' in sub_list:
+                                    row_b = csvlist.index(sub_list)
+                                    column_b = sub_list.index('B')
+                                    print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
+                                          sub_list.index('B') + 1)
+                        except ValueError:
+                            print("No such character in list")
+                        csvfile.seek(0)
+                        csvlist[row_a][column_a] = 'O'
+                        csvlist[row_a][column_a+1] = 'A'
+                        writer.writerows(csvlist)
+                        csvfile.seek(0)
+                        for row in csvlist:
+                            print(row)
+                        try:
+                            for sub_list in csvlist:
+                                if 'A' in sub_list:
+                                    row_a = csvlist.index(sub_list)
+                                    column_a = sub_list.index('A')
+                                    print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
+                                          sub_list.index('A') + 1)
+                        except ValueError:
+                            print("No such character in list")
+
+                        try:
+                            for sub_list in csvlist:
+                                if 'B' in sub_list:
+                                    row_b = csvlist.index(sub_list)
+                                    column_b = sub_list.index('B')
+                                    print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
+                                          sub_list.index('B') + 1)
+                        except ValueError:
+                            print("No such character in list")
+                        csvfile.seek(0)
+                        print("Valid move D")
+                        #movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
+
+                    elif (movement == 'A' or movement == 'a') and (csvlist[row_a][column_a - 1] == 'X'):
+
+                        for row in csvlist:
+                            print(row)
+                        csvfile.seek(0)
+
+                        csvfile.seek(0)
+                        try:
+                            for sub_list in csvlist:
+                                if 'A' in sub_list:
+                                    row_a = csvlist.index(sub_list)
+                                    column_a = sub_list.index('A')
+                                    print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
+                                          sub_list.index('A') + 1)
+                        except ValueError:
+                            print("No such character in list")
+
+                        try:
+                            for sub_list in csvlist:
+                                if 'B' in sub_list:
+                                    row_b = csvlist.index(sub_list)
+                                    column_b = sub_list.index('B')
+                                    print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
+                                          sub_list.index('B') + 1)
+                        except ValueError:
+                            print("No such character in list")
+                        print("Invalid move, try again")
+                        #movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
+                    elif (movement == 'A' or movement == 'a') and (csvlist[row_a][column_a - 1] == 'O' or csvlist[row_a][column_a - 1] == 'B'):
+                        try:
+                            for sub_list in csvlist:
+                                if 'A' in sub_list:
+                                    row_a = csvlist.index(sub_list)
+                                    column_a = sub_list.index('A')
+                                    print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
+                                          sub_list.index('A') + 1)
+                        except ValueError:
+                            print("No such character in list")
+
+                        try:
+                            for sub_list in csvlist:
+                                if 'B' in sub_list:
+                                    row_b = csvlist.index(sub_list)
+                                    column_b = sub_list.index('B')
+                                    print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
+                                          sub_list.index('B') + 1)
+                        except ValueError:
+                            print("No such character in list")
+                        csvfile.seek(0)
+                        csvlist[row_a][column_a] = 'O'
+                        csvlist[row_a][column_a-1] = 'A'
+                        writer.writerows(csvlist)
+                        csvfile.seek(0)
+                        for row in csvlist:
+                            print(row)
+                        try:
+                            for sub_list in csvlist:
+                                if 'A' in sub_list:
+                                    row_a = csvlist.index(sub_list)
+                                    column_a = sub_list.index('A')
+                                    print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
+                                          sub_list.index('A') + 1)
+                        except ValueError:
+                            print("No such character in list")
+
+                        try:
+                            for sub_list in csvlist:
+                                if 'B' in sub_list:
+                                    row_b = csvlist.index(sub_list)
+                                    column_b = sub_list.index('B')
+                                    print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
+                                          sub_list.index('B') + 1)
+                        except ValueError:
+                            print("No such character in list")
+                        print("Valid move A")
+                        #movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
+
+                    elif (movement == 'W' or movement == 'w') and (csvlist[row_a-1][column_a] == 'O' or csvlist[row_a-1][column_a] == 'B'):
+
+                        try:
+                            for sub_list in csvlist:
+                                if 'A' in sub_list:
+                                    row_a = csvlist.index(sub_list)
+                                    column_a = sub_list.index('A')
+                                    print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
+                                          sub_list.index('A') + 1)
+                        except ValueError:
+                            print("No such character in list")
+
+                        try:
+                            for sub_list in csvlist:
+                                if 'B' in sub_list:
+                                    row_b = csvlist.index(sub_list)
+                                    column_b = sub_list.index('B')
+                                    print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
+                                          sub_list.index('B') + 1)
+                        except ValueError:
+                            print("No such character in list")
+                        csvfile.seek(0)
+                        csvlist[row_a][column_a] = 'O'
+                        csvfile.seek(0)
+                        csvlist[row_a-1][column_a] = 'A'
+                        writer.writerows(csvlist)
+                        csvfile.seek(0)
+                        for row in csvlist:
+                            print(row)
+                        try:
+                            for sub_list in csvlist:
+                                if 'A' in sub_list:
+                                    row_a = csvlist.index(sub_list)
+                                    column_a = sub_list.index('A')
+                                    print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
+                                          sub_list.index('A') + 1)
+                        except ValueError:
+                            print("No such character in list")
+
+                        try:
+                            for sub_list in csvlist:
+                                if 'B' in sub_list:
+                                    row_b = csvlist.index(sub_list)
+                                    column_b = sub_list.index('B')
+                                    print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
+                                          sub_list.index('B') + 1)
+                        except ValueError:
+                            print("No such character in list")
+                        print("Valid move W")
+                        #movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
+                    elif movement == 'M' or movement == 'm':
+    ##                    try:
+    ##                        for sub_list in csvlist:
+    ##                            if 'A' in sub_list:
+    ##                                row_a = csvlist.index(sub_list)
+    ##                                column_a = sub_list.index('A')
+    ##                                print("Postion of starting point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+    ##                                      str((sub_list.index('A') + 1)))
+    ##                    except ValueError:
+    ##                        print("No such character in list")
+    ##
+    ##                    try:
+    ##                        for sub_list in csvlist:
+    ##                            if 'B' in sub_list:
+    ##                                row_b = csvlist.index(sub_list)
+    ##                                column_b = sub_list.index('B')
+    ##                                print("Postion of ending point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+    ##                                      str((sub_list.index('B') + 1)))
+    ##                    except ValueError:
+    ##                        print("No such character in list")
+                        print("Exiting current maze")
+
+                        csvfile.seek(0)
+                        writer.writerows(csvlist)
+                        cfm_return_to_menu()
+
+                    elif (movement == 'S' or movement == 's') and (csvlist[row_a+1][column_a] == 'O' or csvlist[row_a+1][column_a] == 'B'):
+
+                        try:
+                            for sub_list in csvlist:
+                                if 'A' in sub_list:
+                                    row_a = csvlist.index(sub_list)
+                                    column_a = sub_list.index('A')
+                                    print("Postion of starting point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('A') + 1)))
+                        except ValueError:
+                            print("No such character in list")
+
+                        try:
+                            for sub_list in csvlist:
+                                if 'B' in sub_list:
+                                    row_b = csvlist.index(sub_list)
+                                    column_b = sub_list.index('B')
+                                    print("Postion of ending point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('B') + 1)))
+                        except ValueError:
+                            print("No such character in list")
+                        csvfile.seek(0)
+                        csvlist[row_a][column_a] = 'O'
+                        csvlist[row_a+1][column_a] = 'A'
+                        writer.writerows(csvlist)
+                        csvfile.seek(0)
+                        for row in csvlist:
+                            print(row)
+                        try:
+                            for sub_list in csvlist:
+                                if 'A' in sub_list:
+                                    row_a = csvlist.index(sub_list)
+                                    column_a = sub_list.index('A')
+                                    print("Postion of starting point is Row " + str((csvlist.index(sub_list) + 1)) + " Column: " +
+                                          str((sub_list.index('A') + 1)))
+                        except ValueError:
+                            print("No such character in list")
+
+                        try:
+                            for sub_list in csvlist:
+                                if 'B' in sub_list:
+                                    row_b = csvlist.index(sub_list)
+                                    column_b = sub_list.index('B')
+                                    print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
+                                          sub_list.index('B') + 1)
+                        except ValueError:
+                            print("No such character in list")
+                        print("Valid move S")
+                        #movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
+
+                    elif (movement == 'S' or movement == 's') and (csvlist[row_a+1][column_a] == 'X'):
+                        for row in csvlist:
+                            print(row)
+                        csvfile.seek(0)
+
+                        csvfile.seek(0)
+                        try:
+                            for sub_list in csvlist:
+                                if 'A' in sub_list:
+                                    row_a = csvlist.index(sub_list)
+                                    column_a = sub_list.index('A')
+                                    print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
+                                          sub_list.index('A') + 1)
+                        except ValueError:
+                            print("No such character in list")
+
+                        try:
+                            for sub_list in csvlist:
+                                if 'B' in sub_list:
+                                    row_b = csvlist.index(sub_list)
+                                    column_b = sub_list.index('B')
+                                    print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
+                                          sub_list.index('B') + 1)
+                        except ValueError:
+                            print("No such character in list")
+                        print("Invalid move, try again")
+                        #movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
+
+                    elif (movement == 'W' or movement == 'w') and (csvlist[row_a-1][column_a] == 'X'):
+                        for row in csvlist:
+                            print(row)
+                        csvfile.seek(0)
+
+                        csvfile.seek(0)
+                        try:
+                            for sub_list in csvlist:
+                                if 'A' in sub_list:
+                                    row_a = csvlist.index(sub_list)
+                                    column_a = sub_list.index('A')
+                                    print("Postion of starting point is Row", csvlist.index(sub_list) + 1, "Column:",
+                                          sub_list.index('A') + 1)
+                        except ValueError:
+                            print("No such character in list")
+
+                        try:
+                            for sub_list in csvlist:
+                                if 'B' in sub_list:
+                                    row_b = csvlist.index(sub_list)
+                                    column_b = sub_list.index('B')
+                                    print("Postion of ending point is Row", csvlist.index(sub_list) + 1, "Column:",
+                                          sub_list.index('B') + 1)
+                        except ValueError:
+                            print("No such character in list")
+                        print("Invalid move, try again")
+                        #movement = input("Press 'W' for UP, 'A' for LEFT, 'D' for RIGHT & 'S' for DOWN, 'M' for MAIN MENU:")
+                        return 1
+                    
+                
+                else:
+                    print("Congratulations. You have solved the maze")
+                    print("Loading ...")
+                    csvfile.seek(0)
+                    writer.writerows(csvlist)
+                    csvfile.seek(0)
+                    time.sleep(3)
+                    return cfm_return_to_menu()
+                    
+                    # play_again = input("Would you like to continue? y/n")
+                    # if play_again == 'y' or play_again == 'Y':
+                    #     print(origin_list)
+                    #     writer.writerows(origin_list)
+                    #     print("Load the game again from the menu")
+                    #     time.sleep(3)
+                    #     print(row_b)
+                    #     return menu()
+                    # elif play_again == 'n' or play_again == 'N':
+                    #     print("Thank-you for playing")
+                    #     print(row_b)
+                    #     time.sleep(2)
+                    #     return menu()
+                    # else:
+                    #     print("You must only select either y or n")
+                    #     print("Please try again")
+                    #     print(row_b)
+                    #     return menu()
+            except UnboundLocalError:
+                print("This maze is already completed, load a new maze or configure the current one to have an end point to be playable")
+                print("Returning to the menu")
                 csvfile.seek(0)
                 writer.writerows(csvlist)
                 csvfile.seek(0)
                 time.sleep(3)
-                return [0,menu()]
-                # play_again = input("Would you like to continue? y/n")
-                # if play_again == 'y' or play_again == 'Y':
-                #     print(origin_list)
-                #     writer.writerows(origin_list)
-                #     print("Load the game again from the menu")
-                #     time.sleep(3)
-                #     print(row_b)
-                #     return menu()
-                # elif play_again == 'n' or play_again == 'N':
-                #     print("Thank-you for playing")
-                #     print(row_b)
-                #     time.sleep(2)
-                #     return menu()
-                # else:
-                #     print("You must only select either y or n")
-                #     print("Please try again")
-                #     print(row_b)
-                #     return menu()
-        except UnboundLocalError:
-            print("This maze is already completed, load a new maze or configure the current one to have an end point to be playable")
-            print("Returning to the menu")
-            csvfile.seek(0)
-            writer.writerows(csvlist)
-            csvfile.seek(0)
-            time.sleep(3)
-            return [0,menu()]
+                return cfm_return_to_menu()
+    except(FileNotFoundError):
+        print("File not found test")
+        return cfm_return_to_menu()
+    return 1
 
 
 
@@ -613,5 +636,6 @@ def configure_maze():
 
 
 
-
-menu()
+if __name__ == "__main__":
+    menu()
+#menu()
